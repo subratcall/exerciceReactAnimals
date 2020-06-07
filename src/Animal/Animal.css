@@ -1,0 +1,10 @@
+.Animal {
+    width: 60%;
+    padding: 25px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0px 0px 22px 0 rgba(181, 181, 181, 0.19);
+    background: white;
+    margin: 16px auto;
+    font-weight: bolder;
+}
