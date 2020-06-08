@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import './App.css';
 import Animal from './Animal/Animal.jsx';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
+
+const StyledButton = styled.button`
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`;
 
 class App extends Component {
     state = {
@@ -88,12 +93,12 @@ class App extends Component {
         return (
             <div className="App">
                 <div className='display'>
-                    <button
+                    <StyledButton
                         className={classes}
                         onClick={() => this.toggleAnimalsHandler()}
                     >
                         Toggle animals
-                    </button>
+                    </StyledButton>
                     {animals}
                     <input
                         className="input" 
