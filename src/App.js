@@ -7,6 +7,7 @@ import Char from './Char/Char';
 
 const StyledButton = styled.button`
     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: ${props => props.alt ? '#ffac82' : '#ff82d5'};
 `;
 
 class App extends Component {
@@ -93,12 +94,18 @@ class App extends Component {
         return (
             <div className="App">
                 <div className='display'>
-                    <StyledButton
+                    <button
+                        className="button"
+                    >
+                        Coucou
+                    </button>
+                    <button
+                        alt={this.state.showAnimals}
                         className={classes}
                         onClick={() => this.toggleAnimalsHandler()}
                     >
                         Toggle animals
-                    </StyledButton>
+                    </button>
                     {animals}
                     <input
                         className="input" 
