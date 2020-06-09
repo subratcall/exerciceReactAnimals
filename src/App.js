@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Animal from './Animal/Animal.jsx';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
     state = {
@@ -56,13 +57,14 @@ class App extends Component {
             animals = (
                 <div>
                     {this.state.animals.map((animal, index) => (
-                        <Animal 
-                            key={animal.id} 
-                            deleted={() => this.deleteAnimal(index)}
-                            change={(event) => this.handleNameChange(event, animal.id)}
-                            name={animal.name} 
-                            type={animal.type}
-                        />
+                        <ErrorBoundary  key={animal.id} >
+                            <Animal 
+                                deleted={() => this.deleteAnimal(index)}
+                                change={(event) => this.handleNameChange(event, animal.id)}
+                                name={animal.name} 
+                                type={animal.type}
+                            />
+                        </ErrorBoundary>
                     ))}
                 </div>
             )
@@ -88,7 +90,7 @@ class App extends Component {
             <div className="App">
                 <div className='display'>
                     <button
-                        alt={this.state.showAnimals}
+                        alt={this.state.showAnimals.toString()}
                         className={assignedclasses}
                         onClick={() => this.toggleAnimalsHandler()}
                     >
