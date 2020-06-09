@@ -58,7 +58,7 @@ class App extends Component {
                     {this.state.animals.map((animal, index) => (
                         <Animal 
                             key={animal.id} 
-                            delete={() => this.deleteAnimal(index)}
+                            deleted={() => this.deleteAnimal(index)}
                             change={(event) => this.handleNameChange(event, animal.id)}
                             name={animal.name} 
                             type={animal.type}
