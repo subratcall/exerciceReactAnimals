@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components';
-import './App.css';
 import Animal from './Animal/Animal.jsx';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
-
-// const StyledButton = styled.button`
-//     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-//     background-color: ${props => props.alt ? '#ffac82' : '#ff82d5'};
-// `;
 
 class App extends Component {
     state = {
@@ -85,23 +78,18 @@ class App extends Component {
             )
         })
 
-        let classes = []
+        let assignedclasses = []
         if (this.state.showAnimals){
-            classes.push('toggleAnimalsOpen')
+            assignedclasses.push('toggleAnimalsOpen')
         } else {
-            classes.push('toggleAnimals')
+            assignedclasses.push('toggleAnimals')
         }
         return (
             <div className="App">
                 <div className='display'>
                     <button
-                        className="button"
-                    >
-                        Coucou
-                    </button>
-                    <button
                         alt={this.state.showAnimals}
-                        className={classes}
+                        className={assignedclasses}
                         onClick={() => this.toggleAnimalsHandler()}
                     >
                         Toggle animals
