@@ -32,37 +32,6 @@ body {
     font-weight: bolder;
 }
 
-.toggleAnimals {
-    background-color: pink;
-    color: white;
-    padding: 12px;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    margin: 10px auto;
-    width: 70%;
-    box-shadow: 0px 0px 22px 0 rgba(181, 181, 181, 0.19);
-    transition: 0.2s;
-}
-
-.toggleAnimalsOpen {
-    background-color: rgb(161, 57, 75);
-    color: white;
-    padding: 12px;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    margin: 10px auto;
-    width: 70%;
-    box-shadow: 0px 0px 22px 0 rgba(181, 181, 181, 0.19);
-    transition: 0.2s;
-}
-
-
 .toggleAnimals:hover {
     background-color: #ffa4b3;
 }

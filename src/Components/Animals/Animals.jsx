@@ -1,5 +1,5 @@
 import React from 'react';
-import Animal from './Animal/Animal'
+import Animal from './Animal/Animal';
 
 const Animals = ({deleted, change, animals}) => animals.map((animal, index) => 
         <Animal 

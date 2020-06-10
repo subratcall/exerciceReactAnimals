@@ -1,4 +1,4 @@
-import {boxShadow} from "../../utils/constant";
+import {boxShadow} from '../../utils/constant';
 
 const styles = {
     char: {

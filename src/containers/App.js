@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Animals from '../Components/Animals/Animals';
 import Validation from '../Components/Validation/Validation';
 import Char from '../Components/Char/Char';
+import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component {
     state = {
@@ -74,22 +75,14 @@ class App extends Component {
             )
         })
 
-        let assignedclasses = []
-        if (this.state.showAnimals){
-            assignedclasses.push('toggleAnimalsOpen')
-        } else {
-            assignedclasses.push('toggleAnimals')
-        }
         return (
             <div className="App">
                 <div className='display'>
-                    <button
-                        alt={this.state.showAnimals.toString()}
-                        className={assignedclasses}
-                        onClick={() => this.toggleAnimalsHandler()}
-                    >
-                        Toggle animals
-                    </button>
+                    <Cockpit
+                        showAnimals={this.state.showAnimals}
+                        animals={this.state.animals}
+                        clicked={this.toggleAnimalsHandler}
+                    />
                     {animals}
                     <input
                         className="input" 
