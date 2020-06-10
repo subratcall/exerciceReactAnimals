@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Animal from './Animal/Animal.jsx';
-import Validation from './Validation/Validation';
-import Char from './Char/Char';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Animals from '../Components/Animals/Animals';
+import Validation from '../Components/Validation/Validation';
+import Char from '../Components/Char/Char';
 
 class App extends Component {
     state = {
@@ -56,16 +55,11 @@ class App extends Component {
         if (this.state.showAnimals){
             animals = (
                 <div>
-                    {this.state.animals.map((animal, index) => (
-                        <ErrorBoundary  key={animal.id} >
-                            <Animal 
-                                deleted={() => this.deleteAnimal(index)}
-                                change={(event) => this.handleNameChange(event, animal.id)}
-                                name={animal.name} 
-                                type={animal.type}
-                            />
-                        </ErrorBoundary>
-                    ))}
+                    <Animals
+                        animals={this.state.animals}
+                        deleted={this.deleteAnimal}
+                        change={this.handleNameChange}
+                    />
                 </div>
             )
         }

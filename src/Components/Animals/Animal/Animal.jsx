@@ -16,11 +16,6 @@ const styles = {
 }
 
 const Animal = ({name, type, deleted, change, classes}) => {
-    const rnd = Math.random();
-
-    if (rnd > 0.7){
-        throw new Error('Something went wrong')
-    }
     return (
         <div className={classes.Animal}>
             <p onClick={deleted}>My name is {name}! I am a {type}</p>
