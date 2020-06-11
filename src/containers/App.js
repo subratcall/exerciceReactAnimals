@@ -5,6 +5,10 @@ import Char from '../Components/Char/Char';
 import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component {
+    constructor (props){
+        super(props);
+        console.log('[Apps.js] constructor')
+    }
     state = {
         animals: [
             { id: '1', name: 'lilou', type: 'mouse'},
@@ -12,9 +16,25 @@ class App extends Component {
             { id: '3', name: 'Rick', type: 'cow'}
         ],
         showAnimals: false,
-        input: '',
+        showCockpit: true,
+        input: ''
+    }
+
+    static getDerivedStateFromProps(props, state){
+        console.log('[App.js] getDerivedStateFromProps', props)
+        return state;
     }
     
+    componentDidMount(){
+        console.log('[App.js] componentDidMount');
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        console.log('[App.js] shouldComponentUpdate')
+        return true;
+    }
+    componentDidUpdate(){
+        console.log('[App.js] componentDidUpdate')
+    }
     handleNameChange = (event, id) => {
         // boucle sur array animals et trouve si un objet animal est trouvé en comparant l'id envoyé en param et un id dans chaque elem de animals
         const animalIndex = this.state.animals.findIndex(a => a.id === id)
@@ -52,17 +72,14 @@ class App extends Component {
     }
     
     render() {
+        console.log('[App.js] render')
         let animals = null;
         if (this.state.showAnimals){
-            animals = (
-                <div>
-                    <Animals
+            animals = <Animals
                         animals={this.state.animals}
                         deleted={this.deleteAnimal}
                         change={this.handleNameChange}
-                    />
-                </div>
-            )
+                    />   
         }
     
         const charList = this.state.input.split('').map((ch, index) => {
@@ -78,11 +95,22 @@ class App extends Component {
         return (
             <div className="App">
                 <div className='display'>
-                    <Cockpit
-                        showAnimals={this.state.showAnimals}
-                        animals={this.state.animals}
-                        clicked={this.toggleAnimalsHandler}
-                    />
+                    <button
+                        onClick={()=> {this.setState({showCockpit: false})}}
+                    >
+                        RemoveCockpit
+                    </button>
+                    {
+                        this.state.showCockpit ? 
+                    
+                        <Cockpit
+                            title={this.props.appTitle}
+                            showAnimals={this.state.showAnimals}
+                            animals={this.state.animals}
+                            clicked={this.toggleAnimalsHandler}
+                        />
+                        : null 
+                    }
                     {animals}
                     <input
                         className="input" 

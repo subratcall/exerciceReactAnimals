@@ -13,4 +13,4 @@ const CharComponent = ({character, deleted, classes}) => {
     )
 }
 
-export default injectSheet(styles)(CharComponent)
+export default injectSheet(styles)(CharComponent);
