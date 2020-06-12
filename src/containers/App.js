@@ -12,7 +12,7 @@ class App extends Component {
     }
     state = {
         animals: [
-            {id: "1", name: "lilou", type: "mouse"},
+            {id: "1", name: "ee", type: "mouse"},
             {id: "2", name: "atchoum", type: "snake"},
             {id: "3", name: "Rick", type: "cow"},
         ],
@@ -63,6 +63,7 @@ class App extends Component {
         const newArray = [...animals.slice(0, animalIndex), ...animals.slice(animalIndex + 1, animals.length)];
 
         this.setState({animals: newArray});
+        console.log("animals", animals);
     };
 
     handleDeleteChar = (charIndex) => {

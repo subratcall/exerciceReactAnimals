@@ -6,7 +6,7 @@ const Cockpit = ({showAnimals, clicked, classes, title}) => {
     useEffect(() => {
         console.log("[Cockpit.js] useEffect");
         setTimeout(() => {
-            alert("hey");
+            console.log("hey");
         }, 1000);
 
         return () => {
