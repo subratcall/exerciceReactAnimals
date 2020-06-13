@@ -1,14 +1,16 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import styles from "./CockpitStyle";
 import injectSheet from "react-jss";
 
 const Cockpit = ({showAnimals, clicked, classes, title}) => {
+    const toggleButtonRef = useRef(null);
+
     useEffect(() => {
         console.log("[Cockpit.js] useEffect");
-        setTimeout(() => {
-            console.log("hey");
-        }, 1000);
-
+        // setTimeout(() => {
+        //     console.log("hey");
+        // }, 1000);
+        toggleButtonRef.current.click();
         return () => {
             console.log("[Cockpit.js] cleanup work in useeffect");
         };
@@ -30,7 +32,7 @@ const Cockpit = ({showAnimals, clicked, classes, title}) => {
     return (
         <div>
             <h1>{title}</h1>
-            <button alt={showAnimals.toString()} className={assignedclasses} onClick={clicked}>
+            <button ref={toggleButtonRef} alt={showAnimals.toString()} className={assignedclasses} onClick={clicked}>
                 Toggle animals
             </button>
         </div>
