@@ -12,13 +12,13 @@ class Animals extends Component {
     // }
 
     // si nextProps.animals = this.props.animals alors tu laisse pas les methodes d'apres runner
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("[Animals.js] shouldComponentUpdate");
-        if (nextProps.animals !== this.props.animals) {
-            return true;
-        }
-        return false;
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log("[Animals.js] shouldComponentUpdate");
+    //     if (nextProps.animals !== this.props.animals) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log("[Animals.js] getSnapShotBeforeUpdate");
@@ -35,6 +35,7 @@ class Animals extends Component {
     }
     render() {
         console.log("[Animals.js] rendering...");
+        console.log("props", this.props);
         return this.props.animals.map((animal, index) => {
             return (
                 <Animal

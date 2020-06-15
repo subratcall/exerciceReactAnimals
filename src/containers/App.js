@@ -4,6 +4,7 @@ import Validation from "../Components/Validation/Validation";
 import Char from "../Components/Char/Char";
 import Cockpit from "../Components/Cockpit/Cockpit";
 import WithClass from "../HOC/WithClass";
+import AuthContext from "../context/auth-context";
 
 class App extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
         showAnimals: false,
         showCockpit: true,
         input: "",
+        authenticated: false,
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -77,6 +79,11 @@ class App extends Component {
         this.setState({input: event.target.value});
     };
 
+    loginHandler = () => {
+        this.setState({authenticated: !this.state.authenticated});
+        console.log("wholeState", this.state);
+    };
+
     render() {
         console.log("[App.js] render");
         let animals = null;
@@ -100,15 +107,17 @@ class App extends Component {
                         }}>
                         RemoveCockpit
                     </button>
-                    {this.state.showCockpit ? (
-                        <Cockpit
-                            title={this.props.appTitle}
-                            showAnimals={this.state.showAnimals}
-                            animals={this.state.animals}
-                            clicked={this.toggleAnimalsHandler}
-                        />
-                    ) : null}
-                    {animals}
+                    <AuthContext.Provider value={{authenticated: this.state.authenticated, login: this.loginHandler}}>
+                        {this.state.showCockpit ? (
+                            <Cockpit
+                                title={this.props.appTitle}
+                                showAnimals={this.state.showAnimals}
+                                animals={this.state.animals}
+                                clicked={this.toggleAnimalsHandler}
+                            />
+                        ) : null}
+                        {animals}
+                    </AuthContext.Provider>
                     <input
                         className="input"
                         type="text"

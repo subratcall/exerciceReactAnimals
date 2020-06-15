@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from "react";
 import styles from "./CockpitStyle";
 import injectSheet from "react-jss";
+import AuthContext from "../../context/auth-context";
 
 const Cockpit = ({showAnimals, clicked, classes, title}) => {
     const toggleButtonRef = useRef(null);
@@ -35,6 +36,13 @@ const Cockpit = ({showAnimals, clicked, classes, title}) => {
             <button ref={toggleButtonRef} alt={showAnimals.toString()} className={assignedclasses} onClick={clicked}>
                 Toggle animals
             </button>
+            <AuthContext.Consumer>
+                {(context) => (
+                    <button className={classes.toggleAnimals} onClick={context.login} alt={showAnimals.toString()}>
+                        Log in
+                    </button>
+                )}
+            </AuthContext.Consumer>
         </div>
     );
 };
